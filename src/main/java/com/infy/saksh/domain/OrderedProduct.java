@@ -8,16 +8,10 @@
 
 package com.infy.saksh.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  * Created by Sakshi Kukreti on 30-04-2017.
@@ -34,6 +28,7 @@ public class OrderedProduct implements Serializable {
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Product product;
+    @JsonIgnore
     @JoinColumn(name = "customer_order_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private CustomerOrder customerOrder;

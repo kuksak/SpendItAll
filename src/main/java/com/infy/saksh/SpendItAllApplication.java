@@ -10,8 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 @SpringBootApplication
@@ -32,6 +30,9 @@ public class SpendItAllApplication {
     @Autowired
     private OrderedProductRepo orderedProductRepo;
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpendItAllApplication.class, args);
+    }
 
     @Bean
     CommandLineRunner init() {
@@ -44,6 +45,7 @@ public class SpendItAllApplication {
                     .withName("Jeans")
                     .build();
             cat = categoryRepo.save(cat);
+
             Product product = ProductBuilder.aProduct()
                     .withName("Lewis Jeans")
                     .withPrice(new BigDecimal(134.50))
@@ -83,9 +85,5 @@ public class SpendItAllApplication {
 
         };
 
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpendItAllApplication.class, args);
     }
 }
